@@ -13,10 +13,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
-    <ion-list-header>Characters</ion-list-header>
+  <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>
 
-    <ion-item *ngFor ="let character of characters">
+  <ion-list>
+
+    <ion-item *ngFor ="let character of characters | searchBar:searchTerm" [routerLink]="['/profile', character.id]">
       <ion-avatar slot="start">
         <img src="{{character.image}}">
       </ion-avatar>
@@ -27,6 +28,4 @@
     </ion-item>
 
   </ion-list>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>

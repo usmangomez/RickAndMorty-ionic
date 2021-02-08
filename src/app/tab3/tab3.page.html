@@ -12,6 +12,15 @@
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
+  
+  <ion-list>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+    <ion-item *ngFor ="let episode of episodes">
+      <ion-label>
+        <h2>{{ episode.name }}</h2>
+        <h3>{{ episode.type }}</h3>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
 </ion-content>

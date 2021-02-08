@@ -9,15 +9,21 @@ import { Character } from 'src/app/models/character';
 })
 export class CharacterService {
 
-  private url: string = 'https://rickandmortyapi.com/api/character';
-
   constructor(private _http: HttpClient) { }
 
   getCharacters(): Observable<CharacterResults> {
-    return this._http.get<CharacterResults>(this.url);
+    return this._http.get<CharacterResults>('https://rickandmortyapi.com/api/character');
   }
 
   getCharacter(id): Observable<Character> {
-    if(id) return this._http.get<Character>(this.url+'/'+id);
+    if(id) return this._http.get<Character>('https://rickandmortyapi.com/api/character/'+id);
+  }
+
+  getLocations() {
+    return this._http.get<CharacterResults>('https://rickandmortyapi.com/api/location');
+  }
+
+  getEpisodes() {
+    return this._http.get<CharacterResults>('https://rickandmortyapi.com/api/episode');
   }
 }

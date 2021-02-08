@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CharacterService } from '../services/character/character.service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  locations:any;
+
+  constructor(private _character:CharacterService) {
+    this._character.getLocations().subscribe(res => {
+      console.log(res.results);
+      this.locations = res.results;
+    })
+  }
 
 }

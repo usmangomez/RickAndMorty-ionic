@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Character } from '../models/character';
+import { CharacterService } from '../services/character/character.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +9,12 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  characters: Character[]=[]
+
+  constructor(private _character: CharacterService) {
+    this._character.getCharacters().subscribe(res=>{
+      this.characters=res.results;
+    });
+  }
 
 }
